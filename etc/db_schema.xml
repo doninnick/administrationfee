@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Donin
+ *
+ * @category Donin
+ * @package Donin_AdministrationFee
+ */ 
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="donin_administration_fee_quote" resource="default" engine="innodb">
+        <column name="entity_id" xsi:type="int" padding="10" unsigned="true" nullable="false" identity="true" comment="ID"/>
+        <column name="quote_id" xsi:type="int" padding="10" unsigned="true" nullable="false" identity="false" comment="Quote Id"/>
+        <column name="amount" xsi:type="float" unsigned="false" nullable="true" comment="Amount"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="DONIN_QUOTE_ADMINISTRATION_FEE_ID_QUOTE_QUOTE_ID"
+                    table="donin_quote_administration_fee" column="quote_id"
+                    referenceTable="quote" referenceColumn="entity_id"
+                    onDelete="CASCADE"/>
+    </table>
+
+    <table name="donin_administration_fee_order" resource="default" engine="innodb">
+        <column name="entity_id" xsi:type="int" padding="10" unsigned="true" nullable="false" identity="true" comment="ID"/>
+        <column name="order_id" xsi:type="int" padding="10" unsigned="true" nullable="false" identity="false" comment="Order Id"/>
+        <column name="amount" xsi:type="float" unsigned="false" nullable="true" comment="Amount"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="DONIN_QUOTE_ADMINISTRATION_FEE_ID_QUOTE_QUOTE_ID"
+                    table="donin_administration_fee_order" column="order_id"
+                    referenceTable="sales_order" referenceColumn="entity_id"
+                    onDelete="CASCADE"/>
+    </table>
+</schema>

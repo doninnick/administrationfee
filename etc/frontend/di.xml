@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Donin
+ *
+ * @category Donin
+ * @package Donin_AdministrationFee
+ */ 
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+   <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+        <plugin name="pc_administration_fee_update_title"
+                type="Donin\AdministrationFee\Plugin\CheckoutLayoutProcessorPlugin"/>
+   </type>
+    <type name="Magento\Checkout\Block\Cart\Totals">
+        <arguments>
+            <argument name="layoutProcessors" xsi:type="array">
+                <item name="updateAdministrationFeeTitleTotal" xsi:type="object">Donin\AdministrationFee\Block\Cart\CartTotalsProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

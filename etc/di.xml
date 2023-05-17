@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Donin
+ *
+ * @category Donin
+ * @package Donin_AdministrationFee
+ */ 
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Donin\AdministrationFee\Api\ConfigInterface"
+                type="Donin\AdministrationFee\Model\Config" />
+    <preference for="Donin\AdministrationFee\Api\Data\AdministrationFeeQuoteInterface"
+                type="Donin\AdministrationFee\Model\AdministrationFeeQuote" />
+
+    <type name="Magento\Quote\Model\QuoteRepository\LoadHandler">
+        <plugin name="administration_fee_load_handler"
+                type="Donin\AdministrationFee\Plugin\QuoteRepository\LoadAdministrationFeePlugin"/>
+    </type>
+
+    <type name="Magento\Quote\Model\QuoteRepository\SaveHandler">
+        <plugin name="administration_fee_save_handler"
+                type="Donin\AdministrationFee\Plugin\QuoteRepository\SaveAdministrationFeePlugin"/>
+    </type>
+
+    <type name="Donin\AdministrationFee\Model\Config\TypePool">
+        <arguments>
+            <argument name="types" xsi:type="array">
+                <item name="percent" xsi:type="object">Donin\AdministrationFee\Model\Checkout\Summary\Calculation\PercentagePrice</item>
+                <item name="fixed" xsi:type="object">Donin\AdministrationFee\Model\Checkout\Summary\Calculation\FixedPrice</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <preference for="Donin\AdministrationFee\Api\Data\AdministrationFeeOrderInterface"
+                type="Donin\AdministrationFee\Model\AdministrationFeeOrder" />
+
+    <type name="Magento\Sales\Api\OrderRepositoryInterface">
+        <plugin name="administration_fee_order_load"
+                type="Donin\AdministrationFee\Plugin\OrderRepository\OrderLoadExtensionAttributePlugin"/>
+    </type>
+</config>

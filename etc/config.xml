@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Donin
+ *
+ * @category Donin
+ * @package Donin_AdministrationFee
+ */ 
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <donin_adminfee>
+            <general>
+                <enable>1</enable>
+                <type>percent</type>
+                <amount>9</amount>
+                <shipping_countries>AE</shipping_countries>
+                <label><![CDATA[Tax & Admin Fee]]></label>
+            </general>
+        </donin_adminfee>
+    </default>
+</config>

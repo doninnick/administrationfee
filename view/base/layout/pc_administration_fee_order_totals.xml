@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Donin
+ *
+ * @category Donin
+ * @package Donin_Invoice
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="order_totals">
+            <block class="Donin\AdministrationFee\Block\Sales\Order\OrderTotals" name="administration_fee_order_totals"/>
+        </referenceBlock>
+    </body>
+</page>
